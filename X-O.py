@@ -1,4 +1,4 @@
-print("Приветствую в игре Крестики-нолики (X-O)!")
+print("Приветствую в игре Крестики-нолики (x-o)!")
 
 #Начальная установка полей для ввода данных
 fields = [['-']*3 for _ in range(3)]
@@ -10,7 +10,7 @@ def show_fields(f):
         print(str(i)+' '+' '.join(fields[i]))
 show_fields(fields)
 
-#Задаем вопрос по координатам для ввода координат:
+#Задаем вопрос по координатам для ввода:
 def users_input(f):
     while True:
         place=input("Введите координаты для поля:").split()
@@ -37,8 +37,20 @@ def users_input(f):
 
 users_input(fields)
 
+
 #Показываем, что получается, пользователю
-fields = [['-']*3 for _ in range(3)]
+fields=[['-']*3 for _ in range(3)]
+count=0
 while True:
+    if count==9:
+        print('Ничья')
+        break
+    if count%2 == 0:
+        user='x'
+    else:
+        user='o'
+        
     show_fields(fields)
     x,y = users_input(fields)
+    fields[x][y] = user
+    count += 1
