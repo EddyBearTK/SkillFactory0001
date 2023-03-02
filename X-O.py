@@ -23,12 +23,22 @@ def users_input(f):
             print("Введите числа")
             continue
         
-        x,y = map(int, map)
+        x,y = map(int, place)
+        if not(x >= 0 and x < 3 and y >= 0 and y < 3):
+            print("Вы вышли из диапазона")
+            continue
         
-        
-        
+        if f[x][y] != '-':
+            print("Клетка занята")
+            continue
         
         break
     return place
 
 users_input(fields)
+
+#Показываем, что получается, пользователю
+fields = [['-']*3 for _ in range(3)]
+while True:
+    show_fields(fields)
+    x,y = users_input(fields)
